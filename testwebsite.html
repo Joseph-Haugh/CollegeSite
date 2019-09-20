@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script type="text/javascript" charset="UTF-8" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+​
+  <ul id="button-list">
+  </ul>
+​
+  <style>
+  body {
+    background: #20262E;
+    padding: 20px;
+    font-family: Helvetica;
+  }
+​
+  button {
+    background: #0084ff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 14px;
+    font-size: 15px;
+    color: #fff;
+  }
+  </style>
+​
+  <script type="text/javascript">
+  // find elements
+  var buttons = $("#button-list")
+​
+  $.get( "https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json", function( data ) {
+    data['Results'].forEach(function(car) {
+      buttons.append('<li><button data-make-id="' +car.MakeId+ '">'+car.MakeName+'</button></li>');
+    });
+  });
+​
+​
+​
+​
+    var buttons1 = $("#button-list1")
+​
+    $.get( "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/452/vehicleType/car?format=json", function( data1 ) {
+    data['Results'].forEach(function(model) {
+      buttons1.append('<li><button>'+model.Model_Name+'</button></li>');
+    });
+  });
+​
+  $('body').on('click', 'button', function(e) {
+    alert($(e.target).data('make-id'));
+  });
+​
+​
+​
+  </script>
+​
+</body>
+</html>
+
