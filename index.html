@@ -9,26 +9,22 @@
 <body>
 <h1> Welcome!</h1>
 <p> Explanation</p>
-
+​
 <div class="topnav">
   <a class="active" href="/index">Home</a>
   <a href="/about">About</a>
   <a href="/contact">Contact</a>
   <div class="search-container">
     <form action="/action_page.php">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
+      <input type="text" placeholder="Search.." id="searchField" onkeyup="search()">
     </form>
   </div>
 </div>
   <h1> hehe </h1>
-
-
-
-
-  <ul id="button-list">
+​
+  <ul id="brands-list">
   </ul>
-  <ul id="button-list1">
+  <ul id="model-list">
 </ul>
   <style>
   body {
@@ -36,31 +32,62 @@
     padding: 20px;
     font-family: Helvetica;
   }
- 
+​
     <h1> white color test </h1>
   </style>
-  
+​
   <script type="text/javascript">
-// find elements
-var button = $("#button-list")
-var button = $("#button-list")
-$.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json", function(data) {
-  data['Results'].forEach(function(car) {
-    button.append('<li><button data-make-id="' + car.MakeId + '">' + car.MakeName + '</button></li>');
+  // find elements
+  var button = $("#brands-list");
+  $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json", function(data) {
+    data['Results'].forEach(function(car) {
+      button.append('<li><button data-make-id="' + car.MakeId + '">' + car.MakeName + '</button></li>');
+    });
   });
-});
-var button1 = $("#button-list1")
-$('body').on('click', 'button', function(e) {
-button.hide();
-  var makeID = $(e.target).data('make-id');
-  $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/"+makeID+"/vehicleType/car?format=json", function(data) {
-    data['Results'].forEach(function(model) {
-      button1.append('<li><button>' + model.Model_Name + '</button></li>');
-      button1.show();
-          });
+​
+  var button1 = $("#model-list")
+  $('body').on('click', 'button', function(e) {
+  button.hide();
+    var makeID = $(e.target).data('make-id');
+    $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/"+makeID+"/vehicleType/car?format=json", function(data) {
+      data['Results'].forEach(function(model) {
+        button1.append('<li><button>' + model.Model_Name + '</button></li>');
+        button1.show();
+            });
+    });
   });
-});
+​
+  function search() {
+      var input, brands, models, brandText, modelText;
+      input = document.getElementById("searchField").value.toUpperCase();
+​
+      brands = document.getElementById("brands-list").getElementsByTagName("li");
+​
+      if (brands.length !== 0) {
+        for (i = 0; i < brands.length; i++) {
+          brandText = brands[i].getElementsByTagName("button")[0].innerText;
+          if (brandText.toUpperCase().indexOf(input) > -1) {
+              brands[i].style.display = "";
+          } else {
+              brands[i].style.display = "none";
+          }
+        }
+      }
+​
+      models = document.getElementById("model-list").getElementsByTagName("li");
+​
+      if (models.length !== 0) {
+        for (n = 0; n < models.length; n++) {
+            modelText = models[n].getElementsByTagName("button")[0].innerText;
+            if (modelText.toUpperCase().indexOf(input) > -1) {
+                models[n].style.display = "";
+            } else {
+                models[n].style.display = "none";
+            }
+        }
+      }
+    }
   </script>
-  
+​
 </body>
 </html>
