@@ -40,6 +40,13 @@
     $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json", function(data) {
       data['Results'].forEach(function(car) {
         button.append('<li><button data-make-id="' + car.MakeId + '">' + car.MakeName + '</button></li>');
+              function Ascending_sort(a, b) {
+          return ($(b).text().trim().toUpperCase()) <
+              ($(a).text().trim().toUpperCase()) ? 1 : -1;
+      }
+      setTimeout(function(){
+        $("ul li").sort(Ascending_sort).appendTo('ul');
+      }, 3000);
       });
     });
     var button1 = $("#model-list")
@@ -79,13 +86,6 @@
           }
         }
       }
-      function Ascending_sort(a, b) {
-          return ($(b).text().trim().toUpperCase()) <
-              ($(a).text().trim().toUpperCase()) ? 1 : -1;
-      }
-      setTimeout(function(){
-        $("ul li").sort(Ascending_sort).appendTo('ul');
-      }, 3000);
   </script>
 </body>
 </html>
