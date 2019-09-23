@@ -22,6 +22,8 @@
 
   <ul id="button-list">
   </ul>
+  <ul id="button-list1">
+</ul>
   <style>
   body {
     background: #20262E;
@@ -94,20 +96,24 @@
 // find elements
 var button = $("#button-list")
 
+var button = $("#button-list")
+
 $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json", function(data) {
   data['Results'].forEach(function(car) {
     button.append('<li><button data-make-id="' + car.MakeId + '">' + car.MakeName + '</button></li>');
   });
 });
 
-var button1 = $("#button-list")
+var button1 = $("#button-list1")
 $('body').on('click', 'button', function(e) {
-button.empty();
+button.hide();
+
   var makeID = $(e.target).data('make-id');
-  $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/"+makeID+"/vehicleType/car?format=json", function(data1) {
-    data1['Results'].forEach(function(model) {
+  $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/"+makeID+"/vehicleType/car?format=json", function(data) {
+    data['Results'].forEach(function(model) {
       button1.append('<li><button>' + model.Model_Name + '</button></li>');
-    });
+      button1.show();
+          });
   });
 });
 
