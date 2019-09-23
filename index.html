@@ -38,21 +38,21 @@
 ​
   <script type="text/javascript">
   // find elements
-  var brands-list = $("#brands-list");
+  var button = $("#brands-list");
   $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json", function(data) {
     data['Results'].forEach(function(car) {
-      brands-list.append('<li><button data-make-id="' + car.MakeId + '">' + car.MakeName + '</button></li>');
+      button.append('<li><button data-make-id="' + car.MakeId + '">' + car.MakeName + '</button></li>');
     });
   });
 ​
-  var model-list = $("#model-list")
+  var button1 = $("#model-list")
   $('body').on('click', 'button', function(e) {
-  brands-list.hide();
+  button.hide();
     var makeID = $(e.target).data('make-id');
     $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/"+makeID+"/vehicleType/car?format=json", function(data) {
       data['Results'].forEach(function(model) {
-        brands-list.append('<li><button>' + model.Model_Name + '</button></li>');
-        brands-list.show();
+        button1.append('<li><button>' + model.Model_Name + '</button></li>');
+        button1.show();
             });
     });
   });
