@@ -17,7 +17,7 @@
       font: italic 200% fantasy;
 }
 
-p.sansserif {
+p {
   font-family: Arial, Helvetica, sans-serif;
   color: #FFFF21;
   text-align: left;
