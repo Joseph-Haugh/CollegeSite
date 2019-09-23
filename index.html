@@ -114,28 +114,3 @@ button.empty();
   </script>
 </body>
 </html>
-
-
-​
-​
-​
-​
-    var buttons1 = $("#button-list1")
-​
-    $.get( "https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/452/vehicleType/car?format=json", function( data1 ) {
-    data['Results'].forEach(function(model) {
-      buttons1.append('<li><button>'+model.Model_Name+'</button></li>');
-    });
-  });
-​
-  $('body').on('click', 'button', function(e) {
-    alert($(e.target).data('make-id'));
-  });
-​
-​
-​
-  </script>
-​
-</body>
-</html>
-
