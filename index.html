@@ -51,7 +51,7 @@
     });
     var button1 = $("#model-list")
     $('body').on('click', 'button', function(e) {
-    button.hide();
+    button.clear();
       var makeID = $(e.target).data('make-id');
       $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/"+makeID+"/vehicleType/car?format=json", function(data) {
         data['Results'].forEach(function(model) {
