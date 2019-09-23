@@ -10,6 +10,7 @@
 <h1> Welcome!</h1>
 <p> Explanation </p>
 
+<input type="button" onclick="sortList()" value = "Sort List" class = "search_button">
 <div class="topnav">
   <a class="active" href="/index">Home</a>
   <a href="/about">About</a>
@@ -35,6 +36,7 @@
   </style>
 
   <script>
+
     // find elements
     var button = $("#brand-list")
     $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json", function(data) {
@@ -42,6 +44,40 @@
         button.append('<li><button data-make-id="' + car.MakeId + '">' + car.MakeName + '</button></li>');
       });
     });
+
+
+  function sortList() {
+  var list, i, switching, b, shouldSwitch;
+  list = document.getElementById("brand-list");
+  switching = true;
+  /* Make a loop that will continue until
+  no switching has been done: */
+  while (switching) {
+    // Start by saying: no switching is done:
+    switching = false;
+    b = list.getElementsByTagName("li")
+    // Loop through all list items:
+    for (i = 0; i < (b.length - 1); i++) {
+      // Start by saying there should be no switching:
+      shouldSwitch = false;
+      /* Check if the next item should
+      switch place with the current item: */
+      if (b[i].innerText.toUpperCase() > b[i + 1].innerText.toUpperCase()) {
+        /* If next item is alphabetically lower than current item,
+        mark as a switch and break the loop: */
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark the switch as done: */
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
+}
+
     var button1 = $("#model-list")
     $('body').on('click', 'button', function(e) {
     button.hide();
@@ -84,7 +120,7 @@
               ($(a).text().trim().toUpperCase()) ? 1 : -1;
       }
       setTimeout(function(){
-        $("ul li").sort(Ascending_sort).appendTo('ul');
+        $('ul li').sort(Ascending_sort).appendTo('ul');
       }, 3000);*/
   </script>
 </body>
