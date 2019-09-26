@@ -141,6 +141,7 @@ modelList.Results.forEach(function(carModel) {
   var makeModelName = makeName+"_"+ carModel.Model_Name;
 
   $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search="+makeModelName+"&limit=1&namespace=0&format=json&origin=*", function(data)     {
+    var listOfModels= = $(e.target).data(modelList.Results)
     data[makeModelName].forEach(listOfModels);
       var wikiLink = data[3][0];
 
