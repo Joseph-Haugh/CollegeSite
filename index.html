@@ -140,8 +140,8 @@ while (switching) {
 modelList.Results.forEach(function(carModel) {
   var makeModelName = makeName+"_"+ carModel.Model_Name
 
-  $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + makeModelName + "&limit=1&namespace=0&format=json&origin=*", function(data) {
-    data[makeModelName].forEach(function(wikiApi) {
+  $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + makeModelName + "&limit=1&namespace=0&format=json&origin=*", function(wikiApi) {
+    wikiApi[makeModelName].forEach(function(wikiApi) {
       var wikiLink = object.keys(wikiApi)[2];
 
     button1.append('<li><a href= wikiLink ><button>' + model.Model_Name + '</button></a></li>');
