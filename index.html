@@ -142,7 +142,7 @@ while (switching) {
           var makeModelName = makeName+"_"+modelName;
           alert ("*"+makeModelName + "*");
 
-          $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + modelMake + "&limit=1&namespace=0&format=json&origin=*", function(data){
+          $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + makeModelName + "&limit=1&namespace=0&format=json&origin=*", function(data){
             alert(data);
                 //data[makeModelName].forEach(function(wikiUrl) {
                 //  var wikiUrl = ()
