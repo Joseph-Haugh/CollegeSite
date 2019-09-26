@@ -135,18 +135,22 @@ while (switching) {
     button.hide();
       var makeID = $(e.target).data('make-id');
       var makeName = $(e.target).data('make-name');
-      $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/"+ makeID +"/vehicleType/car?format=json", function(model) {
-        var makeModelName = makeName+"_"+ model.modelName
+      $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/"+ makeID +"/vehicleType/car?format=json", function(modelList) {
 
-        $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + makeModelName + "&limit=1&namespace=0&format=json&origin=*", function(data) {
-          data[makeModelName].forEach(function(wikiApi) {
-            var wikiLink = object.keys(wikiApi)[2];
+modelList.forEach(function(carModel) {
+  var makeModelName = makeName+"_"+ carModel.model_Name
 
-          button1.append('<li><a href= wikiLink ><button>' + model.Model_Name + '</button></a></li>');
-          button1.show();
+  $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + makeModelName + "&limit=1&namespace=0&format=json&origin=*", function(data) {
+    data[makeModelName].forEach(function(wikiApi) {
+      var wikiLink = object.keys(wikiApi)[2];
 
-              });
-            });
+    button1.append('<li><a href= wikiLink ><button>' + model.Model_Name + '</button></a></li>');
+    button1.show();
+
+        });
+      });
+});
+  
           });
         });
 
