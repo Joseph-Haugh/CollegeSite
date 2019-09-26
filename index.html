@@ -141,10 +141,10 @@ modelList.Results.forEach(function(carModel) {
   var makeModelName = makeName+"_"+ carModel.Model_Name
 
   $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search="+makeModelName+"&limit=1&namespace=0&format=json&origin=*", function(data) {
-    data[makeModelName].forEach(function(data) {
+    data[makeModelName].forEach(function(makeModelName) {
       var wikiLink = data[3][0];
 
-    button1.append('<li><a href= wikiLink ><button>' + model.Model_Name + '</button></a></li>');
+    button1.append('<li><a href="' + wikiLink + '" ><button>' + model.Model_Name + '</button></a></li>');
     button1.show();
 
         });
