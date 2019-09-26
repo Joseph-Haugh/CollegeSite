@@ -147,8 +147,9 @@
             var modelName = model.Model_Name
             var makeModelName = makeName + "_" + modelName;
 
-            $('body').on('click', 'button1', function(e) {
-              $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + makeModelName + "&limit=1&namespace=0&format=json&origin=*", function(data) {
+
+            $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + makeModelName + "&limit=1&namespace=0&format=json&origin=*", function(data) {
+              $('body').on('click', 'button1', function(e) {
                 alert(data);
                 data[makeModelName].forEach(function(wikiApi) {
 
