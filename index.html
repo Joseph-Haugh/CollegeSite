@@ -138,7 +138,19 @@ while (switching) {
       var makeName = $(e.target).data('make-name');
       $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/" + makeID + "/vehicleType/car?format=json", function(data) {
         data['Results'].forEach(function(model) {
-          button1.append('<li><a href="https://en.wikipedia.org/w/api.php?action=opensearch&search='+makeName+"_"+model.Model_Name+'&limit=1&namespace=0&format=json"> <button >' + model.Model_Name + '</button></a></li>');
+          var modelName = model.Model_Name
+          var makeModelName = makeName+"_"+modelName;
+          alert ("*"+makeModelName + "*");
+
+          $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + modelMake + "&limit=1&namespace=0&format=json&origin=*", function(data){
+            alert(data);
+                //data[makeModelName].forEach(function(wikiUrl) {
+                //  var wikiUrl = ()
+                //  button1.append('<li><a href="######LINK IN JSON#####"> <button >' + modelName + '</button></a></li>');
+                //});
+              });
+
+        //  button1.append('<li><a href="https://en.wikipedia.org/w/api.php?action=opensearch&search='+makeName+"_"+model.Model_Name+'&limit=1&namespace=0&format=json"> <button >' + model.Model_Name + '</button></a></li>');
           button1.show();
         });
       });
