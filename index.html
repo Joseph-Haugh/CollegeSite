@@ -137,7 +137,7 @@ while (switching) {
       var makeName = $(e.target).data('make-name');
       $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/"+ makeID +"/vehicleType/car?format=json", function(modelList) {
 
-$(modelList).forEach(function(carModel) {
+$(modelList.Results).forEach(function(carModel) {
   var makeModelName = makeName+"_"+ carModel.model_Name
 
   $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search=" + makeModelName + "&limit=1&namespace=0&format=json&origin=*", function(data) {
