@@ -138,9 +138,9 @@ while (switching) {
       $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/"+ makeID +"/vehicleType/car?format=json", function(modelList) {
 
 modelList.Results.forEach(function(carModel) {
-  var makeModelName = makeName+"_"+ carModel.Model_Name
+  var makeModelName = makeName+"_"+ carModel.Model_Name;
 
-  $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search="+makeModelName+"&limit=1&namespace=0&format=json&origin=*", function(data) {
+  $.get("https://en.wikipedia.org/w/api.php?action=opensearch&search="+makeModelName+"&limit=1&namespace=0&format=json&origin=*", function(data); {
     data[makeModelName].forEach(makeModelName);
       var wikiLink = data[3][0];
 
@@ -148,7 +148,7 @@ modelList.Results.forEach(function(carModel) {
     button1.show();
 
         });
-      });
+      } );
 });
 
           });
