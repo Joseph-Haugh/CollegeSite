@@ -145,9 +145,8 @@ modelList.Results.forEach(function(carModel) {
     //data[makeModelName].forEach(function(listOfModels);
       var wikiLink = data[3][0];
 
-    button1.append('<li><a href="' + + '" ><button onClick = window.open(wikiLink, '_blank')>' + carModel.Model_Name + '</button></a></li>');
+    button1.append('<li><a href="' + wikiLink + '" target="_blank"><button>' + carModel.Model_Name + '</button></a></li>');
     button1.show();
-//button1.onclick = window.open(wikiLink, '_blank');
         });
       } );
 });
