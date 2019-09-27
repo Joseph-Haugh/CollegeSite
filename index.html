@@ -149,12 +149,12 @@
               //var listOfModels= $(e.target).data(modelList.Results);
               //data[makeModelName].forEach(function(listOfModels);
               var wikiLink = data[3][0];
-              if (wikiLink !== "undefined") {
+              if (wikiLink !== undefined) {
                button1.append('<li><a href="' + wikiLink + '" target="_blank"><button>' + carModel.Model_Name + '</button></a></li>');
                button1.show();
              }
                else {
-                 button1.append('<li><a href = " "><button>' + carModel.Model_Name + '</button></a></li>');
+                 button1.append('<li><button>' + carModel.Model_Name + '</button></li>');
                  button1.show();
               }
             });
