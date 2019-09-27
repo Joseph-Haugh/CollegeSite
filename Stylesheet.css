@@ -83,6 +83,7 @@
     margin: 3px;
     padding: 8px;
     width: 150px;
+    cursor: pointer;
 }
    button:hover {
 	   background-color: #006acc;
@@ -115,6 +116,7 @@ p {
 
 .search_button:hover {
     background-color: #006acc;
+    cursor: pointer;
 }
 
 .search_button:active {
