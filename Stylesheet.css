@@ -82,6 +82,7 @@
     color: #fff;
     margin: 3px;
     padding: 8px;
+    width: 150px;
 }
    button:hover {
 	   background-color: #006acc;
