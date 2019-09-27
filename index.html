@@ -66,7 +66,7 @@
       $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json", function(data) {
         data['Results'].forEach(function(car) {
           var brandUrl = car.MakeName.replace(" ", "");
-          button.append('<li><button data-make-id="' + car.MakeId + '"data-make-name="' + car.MakeName + '"><img data-make-id="' + car.MakeId + '"data-make-name="' + car.MakeName + '" src="https://logo.clearbit.com/' + brandUrl + '.com" onerror="this.classList.add(\'hide\');" class="logo"/>' + " " + car.MakeName + '</button></li>');
+          button.append('<li><button data-make-id="' + car.MakeId + '"data-make-name="' + car.MakeName + '"><img data-make-id="' + car.MakeId + '"data-make-name="' + car.MakeName + '" src="https://logo.clearbit.com/' + brandUrl + '.com" width = 100% height = auto onerror="this.classList.add(\'hide\');" class="logo"/>' + " " + car.MakeName + '</button></li>');
         });
       });
 
@@ -148,10 +148,10 @@
               //data[makeModelName].forEach(function(listOfModels);
               var wikiLink = data[3][0];
 
-              $.get("https://en.wikipedia.org/w/api.php?action=query&formatversion=2&prop=pageimages%7Cpageterms&titles=" + makeModelName + "&pithumbsize=200&format=json&origin=*", function(modelImage) {
+              $.get("https://en.wikipedia.org/w/api.php?action=query&formatversion=2&prop=pageimages%7Cpageterms&titles=" + makeModelName + "&pithumbsize=500&format=json&origin=*", function(modelImage) {
                 var wikiImage = modelImage.query.pages[0].thumbnail
                 if (wikiImage !== undefined && wikiLink !== undefined) {
-                  button1.append('<li><a href="' + wikiLink + '" target="_blank"><button><img src="' + wikiImage.source + '">' + makeName + " " + carModel.Model_Name + '</button></a></li>');
+                  button1.append('<li><a href="' + wikiLink + '" target="_blank"><button><img src="' + wikiImage.source + '" width = 100% height = auto>' + makeName + " " + carModel.Model_Name + '</button></a></li>');
                   button1.show();
                 } else if (wikiImage== undefined && wikiLink !== undefined) {
                   button1.append('<li><a href="' + wikiLink + '" target="_blank"><button>' + carModel.Model_Name + '</button></a></li>');
