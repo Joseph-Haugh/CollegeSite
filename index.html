@@ -31,11 +31,7 @@
     <ul id="model-list">
     </ul>
     <style>
-      .logo {
-        max-height: 50px;
-        max-width: 200px;
 
-      }
 
       .hide {
         display: none;
@@ -52,9 +48,13 @@
         /* Chrome, Safari, Opera */
         -moz-columns: 100px 3;
         /* Firefox */
-        columns: 100px 3;
+        columns: 4;
         text-align: center;
         list-style: none;
+      }
+      #model-list{
+        list-style: none;
+        text-align: center;
       }
 
     </style>
@@ -66,7 +66,7 @@
       $.get("https://vpic.nhtsa.dot.gov/api/vehicles/GetMakesForVehicleType/car?format=json", function(data) {
         data['Results'].forEach(function(car) {
           var brandUrl = car.MakeName.replace(" ", "");
-          button.append('<li><button data-make-id="' + car.MakeId + '"data-make-name="' + car.MakeName + '"><img data-make-id="' + car.MakeId + '"data-make-name="' + car.MakeName + '" src="https://logo.clearbit.com/' + brandUrl + '.com" width = 100% height = auto onerror="this.classList.add(\'hide\');" class="logo"/>' + " " + car.MakeName + '</button></li>');
+          button.append('<li><button data-make-id="' + car.MakeId + '"data-make-name="' + car.MakeName + '"><img data-make-id="' + car.MakeId + '"data-make-name="' + car.MakeName + '" src="https://logo.clearbit.com/' + brandUrl + '.com" width = 100% height = auto onerror="this.classList.add(\'hide\');"/>' + " " + car.MakeName + '</button></li>');
         });
       });
 
@@ -159,6 +159,8 @@
                 } else if (wikiImage == undefined && wikiLink == undefined){
                   button1.append('<li><button>' + carModel.Model_Name + '</button></li>');
                   button1.show();
+
+
                 }
               });
             });
