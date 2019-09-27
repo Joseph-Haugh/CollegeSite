@@ -133,8 +133,6 @@
           }
         }
       }
-
-
       var button1 = $("#model-list")
       $('body').on('click', 'button', function(e) {
         button.hide();
@@ -149,14 +147,20 @@
               //var listOfModels= $(e.target).data(modelList.Results);
               //data[makeModelName].forEach(function(listOfModels);
               var wikiLink = data[3][0];
-              if (wikiLink !== undefined) {
-               button1.append('<li><a href="' + wikiLink + '" target="_blank"><button>' + carModel.Model_Name + '</button></a></li>');
-               button1.show();
-             }
-               else {
-                 button1.append('<li><button>' + carModel.Model_Name + '</button></li>');
-                 button1.show();
-              }
+
+              $.get("https://en.wikipedia.org/w/api.php?action=query&formatversion=2&prop=pageimages%7Cpageterms&titles=" + makeModelName + "&pithumbsize=200&format=json&origin=*", function(modelImage) {
+                var wikiImage = modelImage.query.pages[0].thumbnail
+                if (wikiImage !== undefined && wikiLink !== undefined) {
+                  button1.append('<li><a href="' + wikiLink + '" target="_blank"><button><img src="' + wikiImage.source + '">' + makeName + " " + carModel.Model_Name + '</button></a></li>');
+                  button1.show();
+                } else if (wikiImage== undefined && wikiLink !== undefined) {
+                  button1.append('<li><a href="' + wikiLink + '" target="_blank"><button>' + carModel.Model_Name + '</button></a></li>');
+                  button1.show();
+                } else if (wikiImage == undefined && wikiLink == undefined){
+                  button1.append('<li><button>' + carModel.Model_Name + '</button></li>');
+                  button1.show();
+                }
+              });
             });
           });
         });
