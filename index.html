@@ -156,10 +156,10 @@
                   button1.append('<li><a href="' + wikiLink + '" target="_blank"><button><img src="' + wikiImage.source + '" width = 100% height = auto>' + makeName + " " + carModel.Model_Name + '</button></a></li>');
                   button1.show();
                 } else if (wikiImage== undefined && wikiLink !== undefined) {
-                  button1.append('<li><a href="' + wikiLink + '" target="_blank"><button>' + makeModelName + '</button></a></li>');
+                  button1.append('<li><a href="' + wikiLink + '" target="_blank"><button>' + makeName + " " + carModel.Model_Name + '</button></a></li>');
                   button1.show();
                 } else if (wikiImage == undefined && wikiLink == undefined){
-                  button1.append('<li><button>' + makeModelName + '</button></li>');
+                  button1.append('<li><button>' + makeName + " " + carModel.Model_Name + '</button></li>');
                   button1.show();
 
 
