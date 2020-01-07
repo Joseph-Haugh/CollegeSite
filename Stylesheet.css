@@ -172,13 +172,13 @@ p {
 
         .col-25 {
           float: left;
-          width: 25%;
+          width: 13vw;
           margin-top: 6px;
         }
 
         .col-75 {
           float: left;
-          width: 75%;
+          width: 75vw;
           margin-top: 6px;
         }
 
@@ -195,6 +195,23 @@ p {
             width: 100%;
             margin-top: 0;
           }
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+.column2 {
+  float: right;
+  width: 66.66%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 * {box-sizing:border-box}
 
 /* Slideshow container */
