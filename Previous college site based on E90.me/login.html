@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <link type="text/css" rel="stylesheet" href="Stylesheet.css">
+    <meta charset="UTF-8">
+    <title>Apprenticeship Log-in</title>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  </head>
+
+  <body>
+    <h1>Level 4 Software Developer</h1>
+
+    <div class="topnav">
+      <a href="/index.html">HOME</a>
+      <a href="/curriculum.html">Curriculum</a>
+      <a href="/nextsteps.html">Advice</a>
+      <a href="/contact.html">Contact Us</a>
+      <a href="/login.html">Log In</a>
+      <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search..." id="searchField" onkeyup="search()">
+        </form>
+      </div>
+    </div>
+
+    <p> Log In </p>
+
+    <h2>Login Form</h2>
+
+    <form name="loginForm" method="post" action="login.php">
+    <table width="20%" bgcolor="0099CC" align="center">
+
+    <tr>
+    <td colspan=2><center><font size=4><b>HTML Login Page</b></font></center></td>
+    </tr>
+
+    <tr>
+    <td>Username:</td>
+    <td><input type="text" size=25 name="userid"></td>
+    </tr>
+
+    <tr>
+    <td>Password:</td>
+    <td><input type="Password" size=25 name="pwd"></td>
+    </tr>
+
+    <tr>
+    <td ><input type="Reset"></td>
+    <td><input type="submit" onclick="return check(this.form)" value="Login"></td>
+    </tr>
+
+    </table>
+    </form>
+    <script language="javascript">
+    function check(form)
+    {
+
+    if(form.userid.value == "Roseindia" && form.pwd.value == "Roseindia")
+    {
+    	return true;
+    }
+    else
+    {
+    	alert("Error Password or Username")
+    	return false;
+    }
+    }
+    </script>
+
+</html>
