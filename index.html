@@ -19,6 +19,24 @@
 </head>
 <body>
 
+  <script>
+	$.ajax({ 
+		type: 'GET',
+		url: 'https://beta.check-mot.service.gov.uk/trade/vehicles/mot-tests/?registration=dn07nnk',
+		headers: {"x-api-key": "NdkjvON9qK8j1ySURNfQq3sNlJhy0NvWajFUOpNV"},
+		data: { get_param: 'value' }, 
+		dataType: 'json',
+		crossDomain: true,
+		beforeSend: function(xhr){
+		  xhr.withCredentials = true; 
+		},
+		success: function(data, textStatus, request){
+		  console.log(data);
+		}
+	});
+  </script>
+
+
 <div class="jumbotron text-center" style="margin-bottom:0">
     <h1>Level 4 Software Developer</h1>
 </div>
